@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx-unprivileged:latest
 #configuration
 copy ./nginx.conf /etc/nginx/nginx.conf
 #content, comment out the ones you dont need!
