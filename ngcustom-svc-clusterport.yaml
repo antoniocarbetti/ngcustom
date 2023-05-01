@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ngcustom
+  name: ngcustom-svc
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9113"
+    prometheus.io/scheme: http
+spec:
+  selector:
+    app: ngcustom
+  ports:
+  - name: port-1
+    port: 80

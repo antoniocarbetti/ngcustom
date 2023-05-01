@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: ngcustom-rs
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9113"
+    prometheus.io/scheme: http
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ngcustom
+  template:
+    metadata:
+      labels:
+        app: ngcustom
+    spec:
+      containers:
+      - name: ngcustom
+        image: tao0:5000/ngcustom:latest
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 250m
